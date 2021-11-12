@@ -6,7 +6,7 @@ app = Flask(__name__)
 logging.create_logger(app)
 
 
-@app.route('/', methods=["GET"])
+@app.route('/list', methods=["GET"])
 def getHolding() -> Response:
     etf = request.args.get("etf")
     app.logger.debug(etf)
