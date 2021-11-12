@@ -1,15 +1,18 @@
+from typing import Any
+
+
 class Holding:
     name: str
     symbol: str
-    percentageHolding: int
+    percentageHolding: Any
     amountHolding: int
     link: str
 
     def __init__(self):
         self.name = ""
         self.symbol = ""
-        self.percentageHolding = ""
-        self.amountHolding = ""
+        self.percentageHolding = 0.00
+        self.amountHolding = 0
         self.link = ""
 
     def __str__(self) -> str:

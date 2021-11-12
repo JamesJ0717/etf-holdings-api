@@ -1,4 +1,5 @@
 import json
+import logging
 import requests
 from holding import Holding
 
@@ -25,8 +26,14 @@ def getHoldings(etf: str) -> list:
         else:
             holding.symbol = _[1]
         holding.link = "https://www.zacks.com/stock/quote/" + holding.symbol
-        holding.amountHolding = int(_[2].replace(',', ''))
-        holding.percentageHolding = float(_[3])
+        if("NA" in _[2]):
+            holding.amountHolding = _[2]
+        else:
+            holding.amountHolding = int(_[2].replace(',', ''))
+        if("NA" in _[3]):
+            holding.percentageHolding = _[3]
+        else:
+            holding.percentageHolding = float(_[3])
 
         holdings.append(holding.toObject())
 
