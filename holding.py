@@ -1,25 +1,25 @@
-from urllib3.util.url import Url
-
-
 class Holding:
     name: str
-    link: Url
     symbol: str
-    percentageHolding: str
+    percentageHolding: int
+    amountHolding: int
+    link: str
 
     def __init__(self):
         self.name = ""
-        self.link = Url()
         self.symbol = ""
         self.percentageHolding = ""
+        self.amountHolding = ""
+        self.link = ""
 
     def __str__(self) -> str:
-        return (self.name + ", " + self.link + ", " + self.symbol + ", " + self.percentageHolding)
+        return (self.name + ", " + self.symbol + ", " + self.link + ", " + str(self.percentageHolding) + ", " + str(self.amountHolding))
 
     def toObject(self) -> object:
         return {
             "name": self.name,
-            "link": self.link,
             "symbol": self.symbol,
-            "percentageHolding": self.percentageHolding
+            "link": self.link,
+            "percentageHolding": self.percentageHolding,
+            "amountHolding": self.amountHolding
         }

@@ -1,13 +1,15 @@
-from os import error
-from flask import Flask, jsonify, request
-from getHoldings import getHoldings
+from flask import Flask, jsonify, request, logging
+from flask.wrappers import Response
+from get_holdings import getHoldings
 
 app = Flask(__name__)
+logging.create_logger(app)
 
 
 @app.route('/', methods=["GET"])
-def get():
+def getHolding() -> Response:
     etf = request.args.get("etf")
+    app.logger.debug(etf)
     try:
         list = getHoldings(etf)
         return jsonify(list)
